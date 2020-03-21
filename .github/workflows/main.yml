@@ -1,0 +1,38 @@
+name: video-caption
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run:
+    name: run
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install ffmpeg
+          python -m pip install --upgrade pip
+          pip install virtualenv
+      - name: Run
+        env:
+          GOOGLE_EMAIL_USERNAME: ${{ secrets.GOOGLE_EMAIL_USERNAME }}
+          GOOGLE_EMAIL_PASSWORD: ${{ secrets.GOOGLE_EMAIL_PASSWORD }}
+          GOOGLE_NOTIFIED_EMAIL: ${{ secrets.GOOGLE_NOTIFIED_EMAIL }}
+        run: |
+          virtualenv env
+          source env/bin/activate
+          pip install -r requirements.txt
+          python main.py
+
+
