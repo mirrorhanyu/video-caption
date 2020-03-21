@@ -3,10 +3,10 @@ from moviepy.video.tools.subtitles import SubtitlesClip
 
 from notify import send_email
 
-generator = lambda txt: TextClip(txt, font='Arial', fontsize=16, color='white')
-subtitles = SubtitlesClip("Wow! Trump Makes Coronavirus Racist - The Daily Show.en.srt", generator)
+generator = lambda txt: TextClip(txt, font='Arial', fontsize=70, color='white')
+subtitles = SubtitlesClip("Cleaning for Coronavirus - The Daily Show.en-US.srt", generator)
 
-video = VideoFileClip("Wow! Trump Makes Coronavirus Racist - The Daily Show.mp4")
+video = VideoFileClip("Cleaning for Coronavirus - The Daily Show.mp4")
 result = CompositeVideoClip([video, subtitles.set_position(('center','bottom'))])
 
 result.write_videofile("out.mp4")
