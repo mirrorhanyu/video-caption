@@ -9,7 +9,7 @@ subtitles = SubtitlesClip("Wow! Trump Makes Coronavirus Racist - The Daily Show.
 video = VideoFileClip("Wow! Trump Makes Coronavirus Racist - The Daily Show.mp4")
 result = CompositeVideoClip([video, subtitles.set_position(('center','bottom'))])
 
-result.write_videofile("out.mp4", fps=video.fps, temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
+result.write_videofile("out.mp4")
 
 send_email(from_address=os.getenv('GOOGLE_EMAIL_USERNAME', ''),
            to_address=os.getenv('GOOGLE_NOTIFIED_EMAIL', ''),
