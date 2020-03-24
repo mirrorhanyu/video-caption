@@ -3,7 +3,7 @@ from moviepy.video.tools.subtitles import SubtitlesClip
 
 from notify import send_email
 
-generator = lambda txt: TextClip(txt, font='./Helvetica.ttf', fontsize=70, color='white', stroke_width=1.5)
+generator = lambda txt: TextClip(txt, font='./Cunia.otf', fontsize=70, color='white', stroke_width=3)
 subtitles = SubtitlesClip("Cleaning for Coronavirus - The Daily Show.en-US.srt", generator)
 
 video = VideoFileClip("Cleaning for Coronavirus - The Daily Show.mp4")
