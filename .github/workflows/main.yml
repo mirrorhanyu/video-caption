@@ -20,10 +20,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-#          brew update
-#          brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
-#          brew install imagemagick
-#          brew list --versions
           python -m pip install --upgrade pip
           pip install virtualenv
       - name: Run
@@ -36,10 +32,5 @@ jobs:
           source env/bin/activate
           pip install -r requirements.txt
           python main.py
-#      - name: Archive production artifacts
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: out.mp4
-#          path: out.mp4
 
 
