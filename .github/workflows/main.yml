@@ -24,6 +24,8 @@ jobs:
           pip install virtualenv
       - name: Run
         env:
+          BILIBILI_USERNAME: ${{ secrets.BILIBILI_USERNAME }}
+          BILIBILI_PASSWORD: ${{ secrets.BILIBILI_PASSWORD }}
           GOOGLE_EMAIL_USERNAME: ${{ secrets.GOOGLE_EMAIL_USERNAME }}
           GOOGLE_EMAIL_PASSWORD: ${{ secrets.GOOGLE_EMAIL_PASSWORD }}
           GOOGLE_NOTIFIED_EMAIL: ${{ secrets.GOOGLE_NOTIFIED_EMAIL }}

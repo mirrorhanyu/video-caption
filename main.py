@@ -13,7 +13,9 @@
 #                        temp_audiofile="temp-audio.m4a",
 #                        remove_temp=True,
 #                        audio_codec="aac")
+import os
 
-from bypy import ByPy
-bp=ByPy()
-bp.list()
+from bilibiliupload import *
+
+b = Bilibili()
+print(b.login(os.getenv('BILIBILI_USERNAME', ''), os.getenv('BILIBILI_PASSWORD', '')))
