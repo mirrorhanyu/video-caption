@@ -9,21 +9,14 @@ jobs:
   run:
     name: run
     runs-on: macos-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           brew update
-          brew install aom fontconfig frei0r lame fribidi lzo pixman cairo graphite2 harfbuzz libass libbluray libsoxr libvidstab libogg libvorbis libvpx opencore-amr little-cms2 openjpeg opus flac libsndfile libsamplerate rubberband sdl2 snappy speex giflib leptonica tesseract theora x264 x265 xvid
           brew install ffmpeg
           brew install imagemagick
+          brew install python
           python -m pip install --upgrade pip
           pip install virtualenv
       - name: Run
