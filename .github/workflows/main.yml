@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Show IP
+      - name: Show IP
         run: |
           curl https://httpbin.org/ip
       - name: Install dependencies
