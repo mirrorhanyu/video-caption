@@ -11,11 +11,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Show IP
-        run: |
-          curl https://httpbin.org/ip
       - name: Install dependencies
         run: |
+          brew update
+          brew install ffmpeg
+          brew install imagemagick
           brew reinstall python
           pip3 install virtualenv
       - name: Run
@@ -30,5 +30,10 @@ jobs:
           source env/bin/activate
           pip install -r requirements.txt
           python main.py
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: out.mp4
+          path: out.mp4
 
 
