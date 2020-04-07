@@ -1,19 +1,23 @@
+from typing import Callable, Any
+
 from moviepy.editor import *
 from moviepy.video.tools.subtitles import SubtitlesClip
 from moviepy.video.fx.margin import margin
 
-generator = lambda txt: TextClip(txt,
-                                 font='./fonts/GothamMedium.ttf',
-                                 fontsize=45,
-                                 color='white',
-                                 bg_color='#00000066')
-subtitles = margin(clip=SubtitlesClip("Remembering When Coronavirus Was Contained - The Daily Show.en.srt", generator).set_position('center', 'bottom'),
-                   bottom=35,
-                   opacity=0)
 
-video = VideoFileClip("Remembering When Coronavirus Was Contained - The Daily Show.webm", audio=True)
-result = CompositeVideoClip([video, subtitles])
+def add_subtitle(video_path, subtitle_path):
+    generator: Callable[[Any], TextClip] = lambda txt: TextClip(txt,
+                                                                font='./fonts/GothamMedium.ttf',
+                                                                fontsize=45, color='white',
+                                                                bg_color='#00000066')
+    subtitle = margin(clip=SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom')), bottom=35,
+                      opacity=0)
+    video = VideoFileClip(video_path, audio=True)
+    composed_video = CompositeVideoClip([video, subtitle])
+    composed_video.write_videofile("out.mp4",
+                                   threads=4,
+                                   fps=video.fps)
 
-result.write_videofile("out.mp4",
-                       threads=2,
-                       fps=video.fps)
+
+add_subtitle(video_path="Remembering When Coronavirus Was Contained - The Daily Show.webm",
+             subtitle_path="Remembering When Coronavirus Was Contained - The Daily Show.en.srt")
