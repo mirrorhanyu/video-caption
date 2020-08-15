@@ -19,5 +19,5 @@ def add_subtitle(video_path, subtitle_path):
                                    fps=video.fps)
 
 
-add_subtitle(video_path="Remembering When Coronavirus Was Contained - The Daily Show.webm",
-             subtitle_path="Remembering When Coronavirus Was Contained - The Daily Show.en.srt")
+add_subtitle(video_path="Cleaning for Coronavirus - The Daily Show.mp4",
+             subtitle_path="Cleaning for Coronavirus - The Daily Show.en-US.srt")
